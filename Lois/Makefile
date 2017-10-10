@@ -13,7 +13,7 @@ MINIMIZE_OBJS := minimize.o
 .PHONY: all clean
 
 #Targets
-all:
+all: fifo running minimize
 
 fifo: $(FIFO_OBJS)
 	g++ $(CXXFLAGS) $(LDFLAGS) -o fifo $(FIFO_OBJS) $(LOIS_PATH)/bin/liblois.a
@@ -22,7 +22,7 @@ running: $(RUNNING_OBJS)
 	g++ $(CXXFLAGS) $(LDFLAGS) -o running $(RUNNING_OBJS) $(LOIS_PATH)/bin/liblois.a
 
 minimize: $(MINIMIZE_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o minimize $(MINIMIZE_OBJS) $(LOIS_PAHT)/bin/liblois.a
+	g++ $(CXXFLAGS) $(LDFLAGS) -o minimize $(MINIMIZE_OBJS) $(LOIS_PATH)/bin/liblois.a
 
 clean:
 	rm -f $(FIFO_OBJS)

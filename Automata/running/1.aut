@@ -1,0 +1,15 @@
+Automaton 1 4
+Alphabet
+0 1
+States
+0 0 1
+1 0 0
+2 1 0
+3 0 0
+Delta
+0 0 B -> 1 0
+1 0 B -> 1 0
+2 0 AB -> 1 00
+2 0 C -> 0 0
+2 0 BA -> 1 00
+3 0 B -> 2 1

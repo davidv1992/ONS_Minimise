@@ -68,10 +68,11 @@ vector<bool> randKofN(int k, int n, T generator) {
 	return res;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 	// Parameters
-	const int minOrbits = 15, maxOrbits = 15;
-	const int maxVar = 3;
+	if (argc < 4) return 1;
+	const int minOrbits = atoi(argv[1]), maxOrbits = atoi(argv[2]);
+	const int maxVar = atoi(argv[3]);
 	
 	// Initialize random distributions
 	std::random_device rd;

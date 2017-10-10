@@ -61,48 +61,6 @@ template<class State, class Symbol> void minimalize1(lsetof<State> Q, lsetof<Sta
   cout << "classes: " << classes << endl;  
   }
 
-template<class State, class Symbol> void minimalize2(lsetof<State> Q, lsetof<State> F, lsetof<transition<State,Symbol>> delta, lsetof<Symbol> alph) {
-  cout << "Q = " << Q << endl;
-  cout << "F = " << F << endl;
-  cout << "delta = " << delta << endl;
-  
-  lsetof<lsetof<State>> classes;
-  classes += F;
-  classes += Q &~ F;
-  
-  int it = 0;
-  
-  lbool cont = true;
-  
-  While(cont) {
-    lsetof<lsetof<State>> nclasses;
-    cout << "classes = " << classes << endl << endl;
-    cont = ffalse;
-    
-    for(auto& EC: classes) {
-      for(State& q1: EC) {
-        lsetof<State> EC1;
-        for(State& q2: EC) {
-          lbool b = true;
-          for(auto& t1: delta) for(auto& t2: delta) 
-            If(t1.src == q1 && t2.src == q2 && t1.symbol == t2.symbol)
-            If(EXISTS(c, classes, memberof(t1.tgt, c) && !memberof(t2.tgt, c)))
-              b &= ffalse;
-          Ife(b) EC1 += q2;
-          else cont = ftrue;
-          }
-        nclasses += EC1;
-        }
-      }
-
-    classes = optimize(nclasses); it++;
-    }
-
-  cout << "number of iterations: " << it << endl << endl;
-  
-  cout << "classes: " << classes << endl;  
-  }
-
 void fifoTest(int depth) {
 	Domain dA("A");  
 	lsetof<term> A = dA.getSet();
@@ -188,8 +146,7 @@ int main(int argc, char **argv) {
 	initLois();
 	sym.useUnicode();
 	
-	for (int i=0; i<=depth; i++)
-		fifoTest(i);
+	fifoTest(depth);
 
 	return 0;
 }

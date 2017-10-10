@@ -1,10 +1,10 @@
 #Configuration
-ORBITSETS_PATH := /home/david/MFOCSstage/software/OrbitSets
+ONS_PATH := /home/david/MFOCSstage/software/OrbitSets
 
-#Mandatory extra flags
-CXXFLAGS := $(CXXFLAGS) -std=c++11 -g
+#Flags
+CXXFLAGS := -O3 -std=c++11 -g
 
-INCLUDES := -I$(ORBITSETS_PATH)/include
+INCLUDES := -I$(ONS_PATH)/include
 
 GENAUTOMATON_OBJS := GenAutomaton.o
 MINIMIZETEST_OBJS := MinimizeTest.o
@@ -12,23 +12,25 @@ ISCONNECTED_OBJS := IsConnected.o
 FIFO_OBJS := fifo.o
 RUNNING_OBJS := running.o
 
+.PHONY: all clean
+
 #Targets
 all: GenAutomaton MinimizeTest IsConnected fifo running
 
 GenAutomaton: $(GENAUTOMATON_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o GenAutomaton $(GENAUTOMATON_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o GenAutomaton $(GENAUTOMATON_OBJS)
 
 MinimizeTest: $(MINIMIZETEST_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o MinimizeTest $(MINIMIZETEST_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o MinimizeTest $(MINIMIZETEST_OBJS)
 
 IsConnected: $(ISCONNECTED_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o IsConnected $(ISCONNECTED_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o IsConnected $(ISCONNECTED_OBJS)
 
 fifo: $(FIFO_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o fifo $(FIFO_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o fifo $(FIFO_OBJS)
 
 running: $(RUNNING_OBJS)
-	g++ $(CXXFLAGS) $(LDFLAGS) -o running $(RUNNING_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o running $(RUNNING_OBJS)
 
 clean:
 	rm -f $(GENAUTOMATON_OBJS)

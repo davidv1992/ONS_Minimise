@@ -1,5 +1,5 @@
 #Configuration
-ONS_PATH := /home/david/MFOCSstage/software/OrbitSets
+ONS_PATH := /path/to/ONS
 
 #Flags
 CXXFLAGS := -O3 -std=c++11 -g

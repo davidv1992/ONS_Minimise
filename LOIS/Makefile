@@ -1,5 +1,5 @@
 #Configuration
-LOIS_PATH := /home/david/MFOCSstage/software/LOIStest/lois
+LOIS_PATH := /path/to/lois
 
 #Mandatory extra flags
 CXXFLAGS := -O3 -std=c++11 -g

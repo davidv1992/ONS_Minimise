@@ -3,13 +3,13 @@
 #include <sstream>
 #include <utility>
 
-#include <OrbitSets/orbit.h>
-#include <OrbitSets/eqimap.h>
-#include <OrbitSets/nomset.h>
-#include <OrbitSets/rational.h>
+#include <ONS/orbit.h>
+#include <ONS/eqimap.h>
+#include <ONS/nomset.h>
+#include <ONS/rational.h>
 
 using namespace std;
-using namespace OrbitSets;
+using namespace ONS;
 
 template<typename Q, typename A>
 class automaton {

@@ -169,8 +169,8 @@ template<typename Q, typename A> automaton<pair<int,abstract>,A> automaton_minim
 	nomset<pair<int,abstract>> part_domain;
 	eqimap<Q,pair<int,abstract>> partition;
 	
-	part_domain.orbits.insert(orbit<pair<int,abstract>>(1, orbit<abstract>(0)));
-	part_domain.orbits.insert(orbit<pair<int,abstract>>(2, orbit<abstract>(0)));
+	part_domain.orbits.insert(orbit<pair<int,abstract>>({1, abstract(0)}));
+	part_domain.orbits.insert(orbit<pair<int,abstract>>({2, abstract(0)}));
 	partition = eqimap<Q,pair<int,abstract>>(aut.states, [&](Q el) {
 		if (aut.finalStates.contains(el)) {
 			return pair<int, abstract>(1, abstract());
@@ -279,7 +279,7 @@ template<typename Q, typename A> automaton<pair<int,abstract>,A> automaton_minim
 				if (b) tgtSuppSize++;
 			}
 			
-			orbit<pair<int, abstract>> newOrbit(next_dom_count, orbit<abstract>(tgtSuppSize));
+			orbit<pair<int, abstract>> newOrbit({next_dom_count, abstract(tgtSuppSize)});
 			next_dom_count++;
 			next_domain.orbits.insert(newOrbit);
 			next_partition.mapData[o] = {newOrbit, mask};
@@ -328,7 +328,7 @@ int main(int argc, char **argv) {
 		for (int i=0; i<nAlphabet; i++) {
 			int idx, supportSize;
 			in >> idx >> supportSize;
-			orbit<pair<int,abstract>> curOrbit(idx, orbit<abstract>(supportSize));
+			orbit<pair<int,abstract>> curOrbit({idx, abstract(supportSize)});
 			aut.alphabet.orbits.insert(curOrbit);
 			alphabetMap[idx] = curOrbit;
 		}
@@ -339,7 +339,7 @@ int main(int argc, char **argv) {
 			int idx, supportSize;
 			bool isFinal;
 			in >> idx >> supportSize >> isFinal;
-			orbit<pair<int,abstract>> curOrbit(idx, orbit<abstract>(supportSize));
+			orbit<pair<int,abstract>> curOrbit({idx, abstract(supportSize)});
 			aut.states.orbits.insert(curOrbit);
 			stateMap[idx] = curOrbit;
 			if (isFinal)

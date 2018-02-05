@@ -87,19 +87,18 @@ int main(int argc, char *argv[]) {
 	
 	// Setup the basics for the generation
 	automaton <pair<int, abstract>, pair<int, abstract>> aut;
-	aut.alphabet.orbits.insert(orbit<pair<int,abstract>>(0,orbit<abstract>(1)));
+	aut.alphabet.insert({0,abstract(1)});
 	
 	// Generate the orbits
 	vector<orbit<pair<int, abstract>>> orbList;
 	for (int i=0; i<nOrbits; i++) {
 		int curVars = numVars(generator);
-		orbit<pair<int, abstract>> curOrbit(i, orbit<abstract>(curVars));
-		aut.states.orbits.insert(curOrbit);
+		aut.states.insert({i,abstract(curVars)});
 		if (tossup(generator))
-			aut.finalStates.orbits.insert(curOrbit);
+			aut.finalStates.insert({i,abstract(curVars)});
 		if (i == 0)
-			aut.initialState = curOrbit.getElement();
-		orbList.push_back(curOrbit);
+			aut.initialState = {i,abstract(curVars)};
+		orbList.push_back(orbit<pair<int,abstract>>({i,abstract(curVars)}));
 	}
 	
 	// Generate delta

@@ -5,21 +5,24 @@ The random automata and structered automata stored in text format.
 
 LOIS:
 Testing code for LOIS.
-	minimize: Code for minimising automata stored as files. Usage: ./minimize test.aut...
+	minimize: Code for minimising automata stored as files. Usage: ./minimize test1.aut test2.aut ...
 	fifo, running: Code for generating and then minimising the fifo and ww automata. Usage: ./fifo <n>
 	lmax: Code for generating the Lmax sample automaton and minimising it. Usage: ./lmax
+	lint: Code for generating the Lint sample automaton and minimising it. Usage: ./lint
 
 NLambda:
 Testing code for NLambda.
-	minimize: Code for minimising automata stored as files. Usage: ./minimize test.aut...
+	minimize: Code for minimising automata stored as files. Usage: ./minimize test1.aut test2.aut ...
 	fifo_minimize, running_minimize: Code for generating and then minimising the fifo and ww automata. Usage: ./fifo_minimize <n>
 	Lmax_minimize: Code for generating the Lmax sample automaton and minimising it. Usage: ./Lmax_minimize
+	Lint_minimize: Code for generating the Lint sample automaton and minimising it. Usage: ./Lint_minimize
 	
 ONS:
 Testing code for ONS, and code for analysing and generating random automata.
-	MinimizeTest: Code for minimising automata stored as files. Usage: ./MinimizeTest test.aut...
+	MinimizeTest: Code for minimising automata stored as files. Usage: ./MinimizeTest test1.aut test2.aut ...
 	fifo: Code for generating (just generating) fifo automata. Usage: ./fifo <n>
 	running: Code for generating (just generating) ww automata. Usage: ./running <n>
 	Lmax: Code for generating (just generating) the Lmax sample automaton. Usage: ./Lmax
+	Lint: Code for generating (just generating) the Lint sample automaton. Usage: ./Lint
 	IsConnected: Test whether the automaton specified by the input file is connected when interpreting the orbits as nodes, and transitions as bidirectional edges. Usage: ./IsConnected test.aut
 	GenAutomaton: Generate a random automaton with between N1 and N2 orbits of dimension at most k. Usage: ./GenAutomaton <N1> <N2> <k>

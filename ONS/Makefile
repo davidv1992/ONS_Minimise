@@ -12,11 +12,12 @@ ISCONNECTED_OBJS := IsConnected.o
 FIFO_OBJS := fifo.o
 RUNNING_OBJS := running.o
 LMAX_OBJS := Lmax.o
+LINT_OBJS := Lint.o
 
 .PHONY: all clean
 
 #Targets
-all: GenAutomaton MinimizeTest IsConnected fifo running Lmax
+all: GenAutomaton MinimizeTest IsConnected fifo running Lmax Lint
 
 GenAutomaton: $(GENAUTOMATON_OBJS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o GenAutomaton $(GENAUTOMATON_OBJS)
@@ -36,6 +37,9 @@ running: $(RUNNING_OBJS)
 Lmax: $(LMAX_OBJS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Lmax $(LMAX_OBJS)
 
+Lint: $(LINT_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Lint $(LINT_OBJS)
+
 clean:
 	rm -f $(GENAUTOMATON_OBJS)
 	rm -f $(GENAUTOMATON_OBJS:.o=.d)
@@ -49,7 +53,9 @@ clean:
 	rm -f $(RUNNING_OBJS:.o=.d)
 	rm -f $(LMAX_OBJS)
 	rm -f $(LMAX_OBJS:.o=.d)
-	rm -f GenAutomaton MinimizeTest IsConnected fifo running Lmax
+	rm -f $(LINT_OBJS)
+	rm -f $(LINT_OBJS:.o=.d)
+	rm -f GenAutomaton MinimizeTest IsConnected fifo running Lmax Lint
 
 #Common rules
 .cpp.o:
@@ -62,3 +68,4 @@ clean:
 -include $(FIFO_OBJS:.o=.d)
 -include $(RUNNING_OBJS:.o=.d)
 -include $(LMAX_OBJS:.o=.d)
+-include $(LINT_OBJS:.o=.d)

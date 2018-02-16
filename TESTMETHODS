@@ -1,0 +1,15 @@
+Experiments were performed with the following setup.
+
+CPU-info
+Intel(R) Core(TM) i5-3470 @ 3.20GHz
+8GB RAM
+
+Software versions
+Ubuntu 17.10
+GCC 7.2.0
+Stack lts-9.8 (includes GHC 8.0.2)
+Z3 4.4.1
+
+Package versions
+nlambda commit 744b4d3
+lois commit 9fe3d85

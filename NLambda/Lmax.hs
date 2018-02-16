@@ -1,19 +1,13 @@
 {-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
 module Lmax (lmaxExample) where
 
-import Control.DeepSeq (NFData)
 import           GHC.Generics (Generic)
 import           NLambda
 import           Prelude      (Eq, Int, Maybe (..), Ord, Show, length, reverse,
                                ($), (+), (-), (.), (>=))
 import qualified Prelude      ()
 
-data Lmax a = Lmax_start | Lmax_single a | Lmax_double a a deriving (Eq, Ord, Show, Generic)
-instance Contextual a => Contextual (Lmax a) where
-    when f (Lmax_start) = Lmax_start
-    when f (Lmax_single x) = Lmax_single (when f x)
-    when f (Lmax_double x y) = Lmax_double (when f x) (when f y)
-instance BareNominalType a => BareNominalType (Lmax a)
+data Lmax a = Lmax_start | Lmax_single a | Lmax_double a a deriving (Eq, Ord, Show, Generic, NominalType, Contextual)
 
 lmaxExample :: Automaton (Lmax Atom) Atom
 lmaxExample = automaton

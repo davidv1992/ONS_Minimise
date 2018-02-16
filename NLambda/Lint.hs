@@ -1,21 +1,13 @@
 {-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
 module Lint (lintExample) where
 
-import Control.DeepSeq (NFData)
 import           GHC.Generics (Generic)
 import           NLambda
 import           Prelude      (Eq, Int, Maybe (..), Ord, Show, length, reverse,
                                ($), (+), (-), (.), (>=))
 import qualified Prelude      ()
 
-data Lint a = Lint_start | Lint_single a | Lint_full a a | Lint_semi a a | Lint_error deriving (Eq, Ord, Show, Generic)
-instance Contextual a => Contextual (Lint a) where
-    when f (Lint_start) = Lint_start
-    when f (Lint_single x) = Lint_single (when f x)
-    when f (Lint_full x y) = Lint_full (when f x) (when f y)
-    when f (Lint_semi x y) = Lint_semi (when f x) (when f y)
-    when f (Lint_error) = Lint_error
-instance BareNominalType a => BareNominalType (Lint a)
+data Lint a = Lint_start | Lint_single a | Lint_full a a | Lint_semi a a | Lint_error deriving (Eq, Ord, Show, Generic, NominalType, Contextual)
 
 lintExample ::Automaton (Lint Atom) Atom
 lintExample = automaton

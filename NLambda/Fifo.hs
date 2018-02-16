@@ -1,7 +1,6 @@
 {-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
 module Fifo (DataInput(..), fifoExample) where
 
-import Control.DeepSeq (NFData)
 import           GHC.Generics (Generic)
 import           NLambda
 import           Prelude      (Eq, Int, Maybe (..), Ord, Show, length, reverse,
@@ -12,9 +11,7 @@ import qualified Prelude      ()
 -- Functional queue data type. First list is for push stuff onto, the
 -- second list is to pop. If the second list is empty, it will reverse
 -- the first.
-data Fifo a = Fifo [a] [a] deriving (Eq, Ord, Show, Generic)
-instance Contextual a => Contextual (Fifo a) where
-    when f (Fifo xs ys) = Fifo (when f xs) (when f ys)
+data Fifo a = Fifo [a] [a] deriving (Eq, Ord, Show, Generic, NominalType, Contextual)
 
 push :: a -> Fifo a -> Fifo a
 push x (Fifo l1 l2) = Fifo (x:l1) l2
@@ -37,16 +34,11 @@ sizeFifo (Fifo l1 l2) = length l1 + length l2
 -- nominal automaton.
 
 -- The alphabet:
-data DataInput = Put Atom | Get Atom deriving (Eq, Ord, Show, Generic, NFData)
-instance BareNominalType DataInput
-instance Contextual DataInput where
-    when f (Put a) = Put (when f a)
-    when f (Get a) = Get (when f a)
+data DataInput = Put Atom | Get Atom deriving (Eq, Ord, Show, Generic, NominalType, Contextual)
 
 -- The automaton: States consist of fifo queues and a sink state.
 -- This representation is not minimal at all, but that's OK, since the
 -- learner will learn a minimal anyways. The parameter n is the bound.
-instance BareNominalType a => BareNominalType (Fifo a)
 fifoExample :: Int -> Automaton (Maybe (Fifo Atom)) DataInput
 fifoExample n = automaton
     -- states

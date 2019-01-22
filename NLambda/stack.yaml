@@ -1,0 +1,27 @@
+# Some commonly used options have been documented as comments in this file.
+# For advanced use and comprehensive documentation of the format, please see:
+# http://docs.haskellstack.org/en/stable/yaml_configuration/
+
+# Resolver to choose a 'specific' stackage snapshot or a compiler version.
+# A snapshot resolver dictates the compiler version and the set of packages
+# to be used for project dependencies.
+resolver: lts-13.1
+
+# User packages to be built.
+# Various formats can be used as shown in the example below.
+packages:
+- ../../nlambda/
+- ./
+
+# Dependency packages to be pulled from upstream that are not in the resolver
+# (e.g., acme-missiles-0.3)
+extra-deps:
+- combinat-0.2.9.0
+
+# Override default flag values for local packages and extra-deps
+flags:
+  NLambda:
+    TOTAL_ORDER: true
+
+# Extra package databases containing global packages
+extra-package-dbs: []

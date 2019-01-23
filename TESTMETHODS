@@ -1,5 +1,7 @@
 Experiments were performed with the following setup.
 
+February 2018 tests:
+
 CPU-info
 Intel(R) Core(TM) i5-3470 @ 3.20GHz
 8GB RAM
@@ -13,3 +15,22 @@ Z3 4.4.1
 Package versions
 nlambda commit 744b4d3
 lois commit 9fe3d85
+ONS commit 27e5b39
+
+
+2019 tests:
+
+CPU-info
+Intel(R) Core(TM) i5-3470 @ 3.20GHz
+8GB RAM
+
+Software versions
+Ubuntu 18.04
+GCC 7.3.0
+Stack lts-13.1 (includes GHC 8.6.3)
+Z3 4.4.1
+
+Package versions
+nlambda commit b9acb98
+lois commit 9fe3d85
+ONS commit a13823d

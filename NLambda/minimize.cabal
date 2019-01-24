@@ -21,3 +21,19 @@ executable minimize
                  , parser-combinators
   default-language: Haskell2010
   ghc-options:      -O2
+
+executable print
+  main-is:         print.hs
+  other-modules:   Fifo
+                 , FileAutomata
+                 , FormulaAutomata
+                 , Lint
+                 , Lmax
+                 , RunningExample
+  build-depends:   base >= 4.8 && < 5
+                 , containers
+                 , megaparsec
+                 , NLambda >= 1.1
+                 , parser-combinators
+  default-language: Haskell2010
+  ghc-options:      -O2 -Wall

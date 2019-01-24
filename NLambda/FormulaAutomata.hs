@@ -1,6 +1,9 @@
 {-# language RecordWildCards #-}
 
-module FormulaAutomata (minimizeFormulaAutomaton) where
+module FormulaAutomata
+  ( minimizeFormulaAutomaton
+  , printFormulaAutomaton
+  ) where
 
 import qualified Data.Map as Map
 import Data.Map ((!))
@@ -119,6 +122,12 @@ descriptionToNLambda FAutomaton{..} = Automaton{..} where
   initialStates = NL.empty
   finalStates = unions [map (\w -> (l, w)) (replicateAtoms d) | (l, d, b) <- locations, b]
 
+printFormulaAutomaton file = do
+  result <- runParser p file <$> readFile file
+  case result of
+    Left bundle -> putStr (errorBundlePretty bundle)
+    Right autDescription -> do
+      print (descriptionToNLambda autDescription)
 
 minimizeFormulaAutomaton file = do
   result <- runParser p file <$> readFile file

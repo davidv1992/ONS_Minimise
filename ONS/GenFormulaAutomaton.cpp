@@ -75,13 +75,20 @@ formula *genFormula(int stateVars, int inputVars, int maxIters) {
 	const double notprob = 0.5;
 	
 	// Setup randomness
-	random_device rd;
-	default_random_engine generator(rd());
+	static random_device rd;
+	static default_random_engine generator(rd());
 	bernoulli_distribution reldist(relprob);
 	bernoulli_distribution notdist(notprob);
 	uniform_int_distribution<int> logopsdist(0, logops.size()-1);
 	uniform_int_distribution<int> relopsdist(0, relops.size()-1);
 	uniform_int_distribution<int> var(0, stateVars+inputVars-1);
+	auto genVars = [&](){
+		int v1 = var(generator);
+		int v2 = var(generator);
+		int c = 10;
+		while(v1 == v2 && c-- > 0) v2 = var(generator);
+		return make_pair(v1, v2);
+	};
 	
 	// Setup work queue
 	vector<formula*> work;
@@ -101,10 +108,9 @@ formula *genFormula(int stateVars, int inputVars, int maxIters) {
 			cur->inverted = notdist(generator);
 			cur->reldata.relop = relops[relopsdist(generator)];
 			
-			int v1 = var(generator);
-			int v2 = var(generator);
-			cur->reldata.var1 = varName(stateVars, inputVars, v1);
-			cur->reldata.var2 = varName(stateVars, inputVars, v2);
+			auto vs = genVars();
+			cur->reldata.var1 = varName(stateVars, inputVars, vs.first);
+			cur->reldata.var2 = varName(stateVars, inputVars, vs.second);
 		} else {
 			cur->isRel = false;
 			cur->inverted = notdist(generator);
@@ -126,10 +132,9 @@ formula *genFormula(int stateVars, int inputVars, int maxIters) {
 		cur->inverted = notdist(generator);
 		cur->reldata.relop = relops[relopsdist(generator)];
 		
-		int v1 = var(generator);
-		int v2 = var(generator);
-		cur->reldata.var1 = varName(stateVars, inputVars, v1);
-		cur->reldata.var2 = varName(stateVars, inputVars, v2);
+		auto vs = genVars();
+		cur->reldata.var1 = varName(stateVars, inputVars, vs.first);
+		cur->reldata.var2 = varName(stateVars, inputVars, vs.second);
 	}
 	
 	return result;

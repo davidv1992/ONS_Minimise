@@ -1,0 +1,80 @@
+FAutomaton 1 25
+Alphabet
+0 1
+States
+0 1 1
+1 4 0
+2 2 0
+3 3 0
+4 5 1
+5 4 1
+6 4 1
+7 1 0
+8 5 1
+9 1 1
+10 2 0
+11 0 0
+12 0 1
+13 0 1
+14 2 1
+15 2 1
+16 1 0
+17 4 0
+18 0 0
+19 0 0
+20 2 0
+21 4 1
+22 0 0
+23 4 0
+24 0 1
+Delta
+0 0 (x0 = y0) -> 13
+0 0 (not (x0 = y0)) -> 13
+1 0 (not (x0 = x3)) -> 21 y0 x1 x2 y0
+1 0 (x0 = x3) -> 19
+2 0 ((not ((x1 < x0) or (not (y0 = x1)))) or ((y0 < x1) or (not (x0 > y0)))) -> 13
+2 0 (not ((not ((x1 < x0) or (not (y0 = x1)))) or ((y0 < x1) or (not (x0 > y0))))) -> 22
+3 0 (not (((x1 < y0) or (not ((y0 > x2) and (not (x1 = x2))))) and (x1 < x2))) -> 5 x1 x0 x1 y0
+3 0 (((x1 < y0) or (not ((y0 > x2) and (not (x1 = x2))))) and (x1 < x2)) -> 21 y0 x0 y0 x2
+4 0 (x4 < x0) -> 0 x4
+4 0 (not (x4 < x0)) -> 8 x3 x3 x0 x2 x0
+5 0 ((not ((not (x2 < x1)) and (not ((not (x3 < x0)) and (not ((not (x0 = x3)) or (x2 = x0))))))) and (not (x0 = x2))) -> 15 x3 x1
+5 0 (not ((not ((not (x2 < x1)) and (not ((not (x3 < x0)) and (not ((not (x0 = x3)) or (x2 = x0))))))) and (not (x0 = x2)))) -> 9 x1
+6 0 (not (x1 > y0)) -> 11
+6 0 (x1 > y0) -> 9 x3
+7 0 (y0 = x0) -> 20 y0 y0
+7 0 (not (y0 = x0)) -> 15 x0 x0
+8 0 (not ((x2 = y0) or (not (x1 > x0)))) -> 0 x1
+8 0 ((x2 = y0) or (not (x1 > x0))) -> 7 x3
+9 0 (x0 > y0) -> 18
+9 0 (not (x0 > y0)) -> 16 x0
+10 0 (not ((y0 < x1) and (y0 > x1))) -> 3 x1 x0 x0
+10 0 ((y0 < x1) and (y0 > x1)) -> 3 x1 x0 x0
+11 0 (y0 > y0) -> 22
+11 0 (not (y0 > y0)) -> 22
+12 0 (not ((not (y0 > y0)) and (y0 = y0))) -> 19
+12 0 ((not (y0 > y0)) and (y0 = y0)) -> 13
+13 0 ((not (y0 < y0)) or (y0 = y0)) -> 12
+13 0 (not ((not (y0 < y0)) or (y0 = y0))) -> 19
+14 0 (not (y0 < x1)) -> 7 x1
+14 0 (y0 < x1) -> 12
+15 0 ((not (y0 = x0)) and (x0 > x1)) -> 12
+15 0 (not ((not (y0 = x0)) and (x0 > x1))) -> 11
+16 0 (x0 < y0) -> 10 x0 y0
+16 0 (not (x0 < y0)) -> 18
+17 0 (not (x3 > x0)) -> 9 x1
+17 0 (x3 > x0) -> 17 x0 x1 x0 x2
+18 0 ((y0 < y0) and (not (y0 < y0))) -> 22
+18 0 (not ((y0 < y0) and (not (y0 < y0)))) -> 0 y0
+19 0 (not ((not ((y0 > y0) and (y0 > y0))) and (y0 > y0))) -> 12
+19 0 ((not ((y0 > y0) and (y0 > y0))) and (y0 > y0)) -> 19
+20 0 ((((not (x1 = y0)) and (not (y0 = x1))) or (x1 = y0)) or (y0 < x0)) -> 15 y0 x0
+20 0 (not ((((not (x1 = y0)) and (not (y0 = x1))) or (x1 = y0)) or (y0 < x0))) -> 24
+21 0 ((not (x3 > x2)) and (not ((not (x1 > x0)) or (x1 < x3)))) -> 4 x3 y0 y0 x0 x3
+21 0 (not ((not (x3 > x2)) and (not ((not (x1 > x0)) or (x1 < x3))))) -> 0 x2
+22 0 (not (y0 = y0)) -> 22
+22 0 (y0 = y0) -> 16 y0
+23 0 (not ((x2 < x0) or (not (x2 > y0)))) -> 11
+23 0 ((x2 < x0) or (not (x2 > y0))) -> 0 x2
+24 0 (y0 > y0) -> 19
+24 0 (not (y0 > y0)) -> 9 y0

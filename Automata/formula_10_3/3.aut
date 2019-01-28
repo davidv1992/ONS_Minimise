@@ -1,0 +1,35 @@
+FAutomaton 1 10
+Alphabet
+0 1
+States
+0 0 1
+1 2 0
+2 1 0
+3 3 1
+4 1 0
+5 2 1
+6 2 0
+7 1 0
+8 0 0
+9 0 1
+Delta
+0 0 (not (y0 > y0)) -> 4 y0
+0 0 (y0 > y0) -> 8
+1 0 (not (((not (y0 > x1)) or (not ((not (y0 > x1)) or (not (y0 > x0))))) and (y0 = x1))) -> 0
+1 0 (((not (y0 > x1)) or (not ((not (y0 > x1)) or (not (y0 > x0))))) and (y0 = x1)) -> 0
+2 0 ((not (y0 < x0)) and (y0 > x0)) -> 9
+2 0 (not ((not (y0 < x0)) and (y0 > x0))) -> 5 y0 x0
+3 0 (not ((not (((x2 = x0) or (not (x2 > x0))) and (not (x2 > y0)))) or (not (x0 < x1)))) -> 8
+3 0 ((not (((x2 = x0) or (not (x2 > x0))) and (not (x2 > y0)))) or (not (x0 < x1))) -> 7 y0
+4 0 (y0 < x0) -> 7 y0
+4 0 (not (y0 < x0)) -> 0
+5 0 (not ((y0 = x0) or (((not (y0 < x1)) or (x1 < x0)) and (not (x1 = y0))))) -> 2 x0
+5 0 ((y0 = x0) or (((not (y0 < x1)) or (x1 < x0)) and (not (x1 = y0)))) -> 1 x0 x0
+6 0 (x1 > y0) -> 1 x0 y0
+6 0 (not (x1 > y0)) -> 7 x1
+7 0 (x0 < y0) -> 9
+7 0 (not (x0 < y0)) -> 9
+8 0 (not (y0 < y0)) -> 9
+8 0 (y0 < y0) -> 9
+9 0 (y0 < y0) -> 9
+9 0 (not (y0 < y0)) -> 8

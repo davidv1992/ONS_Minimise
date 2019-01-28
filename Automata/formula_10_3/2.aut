@@ -1,0 +1,35 @@
+FAutomaton 1 10
+Alphabet
+0 1
+States
+0 1 0
+1 0 0
+2 2 0
+3 3 1
+4 0 0
+5 2 0
+6 1 1
+7 3 1
+8 1 0
+9 1 0
+Delta
+0 0 (((not (x0 = y0)) or (not (y0 = x0))) or (not ((y0 = x0) and (not (y0 = x0))))) -> 4
+0 0 (not (((not (x0 = y0)) or (not (y0 = x0))) or (not ((y0 = x0) and (not (y0 = x0)))))) -> 9 y0
+1 0 (not ((y0 = y0) and (not (y0 > y0)))) -> 9 y0
+1 0 ((y0 = y0) and (not (y0 > y0))) -> 9 y0
+2 0 (y0 > x1) -> 1
+2 0 (not (y0 > x1)) -> 2 x0 x1
+3 0 (x0 > y0) -> 8 x0
+3 0 (not (x0 > y0)) -> 8 x2
+4 0 (y0 > y0) -> 8 y0
+4 0 (not (y0 > y0)) -> 0 y0
+5 0 (not (x1 < x0)) -> 4
+5 0 (x1 < x0) -> 7 x0 x1 y0
+6 0 (not (((x0 = y0) or (not (y0 < x0))) or (not ((y0 > x0) and (not (x0 < y0)))))) -> 5 y0 y0
+6 0 (((x0 = y0) or (not (y0 < x0))) or (not ((y0 > x0) and (not (x0 < y0))))) -> 0 x0
+7 0 (not (x2 > x1)) -> 9 x0
+7 0 (x2 > x1) -> 9 x0
+8 0 (((not ((x0 > y0) and (x0 = y0))) and (not (y0 = x0))) and ((y0 = x0) and (not (x0 = y0)))) -> 6 y0
+8 0 (not (((not ((x0 > y0) and (x0 = y0))) and (not (y0 = x0))) and ((y0 = x0) and (not (x0 = y0))))) -> 1
+9 0 ((x0 > y0) and (not (y0 = x0))) -> 1
+9 0 (not ((x0 > y0) and (not (y0 = x0)))) -> 2 y0 y0
